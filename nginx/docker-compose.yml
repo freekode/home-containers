@@ -12,4 +12,7 @@ services:
       - ${CONFIGURATION_PATH}/nginx/conf.d:/etc/nginx/conf.d
       - ${CONFIGURATION_PATH}/nginx/snippets:/etc/nginx/snippets
       - ${CONFIGURATION_PATH}/nginx/keys:/etc/nginx/keys
-      - ${EXT_DRIVE_PATH}:/ext-drive
+      - type: bind
+        read_only: true
+        source: ${EXT_DRIVE_PATH}
+        target: /ext-drive
