@@ -4,7 +4,6 @@ services:
     container_name: nginx
     image: nginx
     restart: unless-stopped
-    read_only: true
     privileged: true
     ports:
       - '80:80'
