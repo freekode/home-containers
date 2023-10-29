@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  wireguard:
+    image: ghcr.io/linuxserver/wireguard
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    ports:
+      - 51820:51820/udp
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+      - PEERS=${WIREGUARD_PEERS}
+      - PEERDNS=1.1.1.1
+    volumes:
+      - ${CONFIGURATION_PATH}/wireguard/config:/config
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
