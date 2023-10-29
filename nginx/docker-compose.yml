@@ -4,6 +4,7 @@ services:
     container_name: nginx
     image: nginx
     restart: unless-stopped
+    read_only: true
     privileged: true
     ports:
       - '80:80'
@@ -12,3 +13,4 @@ services:
       - ${CONFIGURATION_PATH}/nginx/conf.d:/etc/nginx/conf.d
       - ${CONFIGURATION_PATH}/nginx/snippets:/etc/nginx/snippets
       - ${CONFIGURATION_PATH}/nginx/keys:/etc/nginx/keys
+      - ${EXT_DRIVE_PATH}:/ext-drive
