@@ -19,4 +19,4 @@ services:
       - PGID=1000
       - TZ=${TZ}
       - PEERS=${WIREGUARD_PEERS}
-      - PEERDNS=1.1.1.1
+      - PEERDNS=192.168.1.105
