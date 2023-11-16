@@ -9,6 +9,7 @@ services:
     privileged: true
     volumes:
       - ${CONFIGURATION_PATH}/my-home-assistant/home-assistant:/config
+      - /run/dbus:/run/dbus:ro
     environment:
       - TZ=${TZ}
 
