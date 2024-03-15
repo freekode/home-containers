@@ -11,7 +11,6 @@ services:
       - 5355:5355
     volumes:
       - ${CONFIGURATION_PATH}/samba/data:/data
-      - ${EXT_DRIVE_PATH}:/samba/public
     environment:
       - TZ=${TZ}
       - SAMBA_HOSTS_ALLOW=${SAMBA_HOSTS_ALLOW}
