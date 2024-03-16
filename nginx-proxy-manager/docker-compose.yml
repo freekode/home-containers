@@ -11,3 +11,4 @@ services:
     volumes:
       - ${CONFIGURATION_PATH}/nginx-proxy-manager/data:/data
       - ${CONFIGURATION_PATH}/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      - ${CONFIGURATION_PATH}/nginx-proxy-manager/_hsts_map.conf:/app/templates/_hsts_map.conf
