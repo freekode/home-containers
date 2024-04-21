@@ -1,0 +1,18 @@
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent
+    container_name: qbittorrent
+    restart: unless-stopped
+    volumes:
+      - ${CONFIGURATION_PATH}/qbittorrent/config:/config
+      - ${GAMES_PATH}:/games
+      - ${MEDIA_PATH}:/media
+    ports:
+      - 1882:1882
+      - 6881:6881
+      - 6881:6881/udp
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+      - WEBUI_PORT=1882

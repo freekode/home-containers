@@ -1,0 +1,19 @@
+volumes:
+  matrix_db:
+
+services:
+  matrix:
+    container_name: matrix
+    image: matrixdotorg/synapse
+    restart: unless-stopped
+    ports:
+      - 8008:8008
+    volumes:
+      - ${CONFIGURATION_PATH}/matrix/matrix:/data
+  matrix-whatsapp:
+    image: dock.mau.dev/mautrix/whatsapp
+    restart: unless-stopped
+    volumes:
+      - ${CONFIGURATION_PATH}/matrix/matrix-whatsapp:/data
+    depends_on:
+      - matrix

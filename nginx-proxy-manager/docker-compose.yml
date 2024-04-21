@@ -1,0 +1,13 @@
+services:
+  app:
+    container_name: nginx-proxy-manager
+    image: 'jc21/nginx-proxy-manager'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81'
+    volumes:
+      - ${CONFIGURATION_PATH}/nginx-proxy-manager/data:/data
+      - ${CONFIGURATION_PATH}/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      - ${CONFIGURATION_PATH}/nginx-proxy-manager/_hsts_map.conf:/app/templates/_hsts_map.conf

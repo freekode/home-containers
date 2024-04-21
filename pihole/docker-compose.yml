@@ -1,0 +1,19 @@
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole
+    restart: unless-stopped
+    ports:
+      - '53:53/tcp'
+      - '53:53/udp'
+      - "67:67/udp"
+      - '1884:80/tcp'
+    volumes:
+      - ${CONFIGURATION_PATH}/pihole/etc-pihole:/etc/pihole
+      - ${CONFIGURATION_PATH}/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+    cap_add:
+      - NET_ADMIN
+    environment:
+      TZ: ${TZ}
+      FTLCONF_LOCAL_IPV4: ${SERVER_IP}
+      WEBPASSWORD: ${PIHOLE_WEBPASSWORD}

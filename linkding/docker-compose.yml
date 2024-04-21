@@ -1,0 +1,12 @@
+services:
+  app:
+    container_name: linkding
+    image: sissbruecker/linkding:latest
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ${CONFIGURATION_PATH}/linkding/data:/etc/linkding/data
+    environment:
+      - LD_SUPERUSER_NAME=${LINKDING_SUPERUSER_NAME}
+      - LD_SUPERUSER_PASSWORD=${LINKDING_SUPERUSER_PASSWORD}

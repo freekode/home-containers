@@ -1,0 +1,9 @@
+services:
+  app:
+    container_name: actualbudget
+    image: docker.io/actualbudget/actual-server:latest
+    restart: unless-stopped
+    ports:
+      - '5006:5006'
+    volumes:
+      - ${CONFIGURATION_PATH}/actualbudget/data:/data

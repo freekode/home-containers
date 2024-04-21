@@ -1,0 +1,14 @@
+services:
+  plex:
+    container_name: plex
+    image: linuxserver/plex
+    restart: unless-stopped
+    network_mode: host
+    privileged: true
+    volumes:
+      - ${CONFIGURATION_PATH}/plex/config:/config
+      - ${MEDIA_PATH}:/media
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - - PLEX_CLAIM=${PLEX_CLAIM}

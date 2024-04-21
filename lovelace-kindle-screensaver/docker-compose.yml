@@ -1,0 +1,20 @@
+services:
+  app:
+    image: sibbl/hass-lovelace-kindle-screensaver:latest
+    restart: unless-stopped
+    environment:
+      - HA_BASE_URL=http://${SERVER_IP}:8123
+      - HA_SCREENSHOT_URL=/dashboard-devices/nook?kiosk
+      - HA_ACCESS_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5NzVmZjIyN2VhNjM0NTkyOTVmMzZiYzkyYzc2YTA5OSIsImlhdCI6MTcxMTU0NDI0NiwiZXhwIjoyMDI2OTA0MjQ2fQ.G9n251nP_hUiff-g3iYu6tfV3iVtWst0T1gw0rVNIZ0
+      - CRON_JOB=*/10 * * * *
+      - RENDERING_SCREEN_HEIGHT=800
+      - RENDERING_SCREEN_WIDTH=600
+      - GRAYSCALE_DEPTH=8
+      - OUTPUT_PATH=/output/cover.png
+      - LANGUAGE=en
+      - ROTATION=0
+      - TZ=${TZ}
+    ports:
+      - 5000:5000
+    volumes:
+      - ${CONFIGURATION_PATH}/lovelace-screensaver/:/output

@@ -1,0 +1,7 @@
+services:
+  app:
+    image: ghcr.io/freekode/intervals-wellness/intervals-wellness
+    container_name: intervals-wellness
+    restart: unless-stopped
+    ports:
+      - '1890:80'

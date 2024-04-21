@@ -1,0 +1,39 @@
+services:
+  home-assistant:
+    container_name: home-assistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    restart: unless-stopped
+    network_mode: host
+    privileged: true
+    volumes:
+      - ${CONFIGURATION_PATH}/my-home-assistant/home-assistant:/config
+      - /run/dbus:/run/dbus:ro
+    environment:
+      - TZ=${TZ}
+
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt
+    restart: unless-stopped
+    privileged: true
+    depends_on:
+      - mosquitto
+    ports:
+      - 1881:8080
+    volumes:
+      - ${CONFIGURATION_PATH}/my-home-assistant/zigbee2mqtt:/app/data
+      - /run/udev:/run/udev:ro
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+    environment:
+      - TZ=${TZ}
+
+  mosquitto:
+    container_name: mosquitto
+    image: library/eclipse-mosquitto:1.6.13
+    restart: unless-stopped
+    ports:
+      - 1883:1883
+      - 9001:9001
+    environment:
+      - TZ=${TZ}
