@@ -22,13 +22,12 @@ services:
       - db
       - broker
     ports:
-      - "8000:8000"
+      - "1900:8000"
     volumes:
       - ${CONFIGURATION_PATH}/data:/usr/src/paperless/data
       - ${CONFIGURATION_PATH}/media:/usr/src/paperless/media
       - ${CONFIGURATION_PATH}/export:/usr/src/paperless/export
       - ${CONFIGURATION_PATH}/consume:/usr/src/paperless/consume
-    env_file: docker-compose.env
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
