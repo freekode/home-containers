@@ -10,10 +10,7 @@ services:
     restart: unless-stopped
     volumes:
       - ${CONFIGURATION_PATH}/pgdata:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: paperless
-      POSTGRES_USER: paperless
-      POSTGRES_PASSWORD: paperless
+    env_file: .env
 
   webserver:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
@@ -28,6 +25,4 @@ services:
       - ${CONFIGURATION_PATH}/media:/usr/src/paperless/media
       - ${CONFIGURATION_PATH}/export:/usr/src/paperless/export
       - ${CONFIGURATION_PATH}/consume:/usr/src/paperless/consume
-    environment:
-      PAPERLESS_REDIS: redis://broker:6379
-      PAPERLESS_DBHOST: db
+    env_file: .env
