@@ -7,7 +7,5 @@ services:
       - ${CONFIGURATION_PATH}/stirling-pdf/trainingData:/usr/share/tessdata
       - ${CONFIGURATION_PATH}/stirling-pdf/extraConfigs:/configs
     env_file:
-      - path: ../generic.env
-        required: true
       - path: ./.env
         required: true
