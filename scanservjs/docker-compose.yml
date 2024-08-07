@@ -1,0 +1,10 @@
+services:
+  app:
+    image: sbs20/scanservjs:latest
+    container_name: scanservjs-container
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - 1910:8080
+    volumes:
+      - /var/run/dbus:/var/run/dbus
