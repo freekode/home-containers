@@ -8,3 +8,6 @@ services:
       - 1910:8080
     volumes:
       - /var/run/dbus:/var/run/dbus
+    env_file:
+      - path: ./.env
+        required: true
