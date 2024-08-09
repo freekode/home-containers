@@ -6,6 +6,4 @@ services:
     volumes:
       - ${CONFIGURATION_PATH}/stirling-pdf/trainingData:/usr/share/tessdata
       - ${CONFIGURATION_PATH}/stirling-pdf/extraConfigs:/configs
-    env_file:
-      - path: ./.env
-        required: true
+    env_file: .env
